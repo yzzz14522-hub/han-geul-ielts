@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import { wordsBatch01 } from "./words-batch-01";
+import { wordsBatch02 } from "./words-batch-02";
 
 type Word = {
   id: number;
@@ -223,7 +224,11 @@ const legacyWords: Word[] = [
 
 // 合并旧词库和第一批500词。
 // 旧词ID仍为1–15，新词ID为16–515。
-const words: Word[] = [...legacyWords, ...wordsBatch01];
+const words: Word[] = [
+  ...legacyWords,
+  ...wordsBatch01,
+  ...wordsBatch02
+];
 
 const stages: { id: Stage; label: string }[] = [
   { id: "meaning", label: "认得单词" },

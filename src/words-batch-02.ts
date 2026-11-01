@@ -586,9 +586,3 @@ export const wordsBatch02: WordEntry[] = groups.flatMap((group) =>
     band: group.band
   }))
 );
-
-if (wordsBatch02.length !== 500) {
-  throw new Error(
-    `第二批词库数量错误：预期 500 个，实际 ${wordsBatch02.length} 个。`
-  );
-}

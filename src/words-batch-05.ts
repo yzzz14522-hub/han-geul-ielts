@@ -1,0 +1,596 @@
+
+import type { WordEntry } from "./words-batch-01";
+
+import { wordsBatch01 } from "./words-batch-01";
+import { wordsBatch02 } from "./words-batch-02";
+import { wordsBatch03 } from "./words-batch-03";
+import { wordsBatch04 } from "./words-batch-04";
+
+type RawWord = readonly [string, string, string];
+
+const groups: {
+  topic: string;
+  band: string;
+  items: readonly RawWord[];
+}[] = [
+  {
+    topic: "International Relations",
+    band: "7+",
+    items: [
+      ["alliance", "noun", "联盟；同盟"],
+      ["ally", "noun/verb", "盟友；结盟"],
+      ["bilateral", "adj", "双边的"],
+      ["multilateral", "adj", "多边的"],
+      ["diplomat", "noun", "外交官"],
+      ["embassy", "noun", "大使馆"],
+      ["ambassador", "noun", "大使；代表"],
+      ["consulate", "noun", "领事馆"],
+      ["consular", "adj", "领事的"],
+      ["sovereignty dispute", "noun", "主权争端"],
+      ["border dispute", "noun", "边界争端"],
+      ["ceasefire", "noun", "停火"],
+      ["hostility", "noun", "敌意；敌对行为"],
+      ["hostile", "adj", "敌对的；不友善的"],
+      ["negotiation", "noun", "谈判；协商"],
+      ["negotiate", "verb", "谈判；协商"],
+      ["negotiator", "noun", "谈判代表"],
+      ["mediation", "noun", "调解；斡旋"],
+      ["mediate", "verb", "调解；斡旋"],
+      ["mediator", "noun", "调解人"],
+      ["reconciliation", "noun", "和解；调和"],
+      ["reconcile", "verb", "使和解；调和"],
+      ["diplomatic relations", "noun", "外交关系"],
+      ["foreign affairs", "noun", "外交事务"],
+      ["foreign policy", "noun", "外交政策"],
+      ["international cooperation", "noun", "国际合作"],
+      ["international community", "noun", "国际社会"],
+      ["humanitarian", "adj/noun", "人道主义的；人道主义者"],
+      ["humanitarian aid", "noun", "人道主义援助"],
+      ["refugee camp", "noun", "难民营"],
+      ["asylum seeker", "noun", "寻求庇护者"],
+      ["disarmament", "noun", "裁军"],
+      ["disarm", "verb", "解除武装"],
+      ["militarisation", "noun", "军事化"],
+      ["militarise", "verb", "使军事化"],
+      ["peacekeeping", "noun", "维和行动"],
+      ["peacekeeper", "noun", "维和人员"],
+      ["peaceful coexistence", "noun", "和平共处"],
+      ["territorial integrity", "noun", "领土完整"],
+      ["trade agreement", "noun", "贸易协定"],
+      ["trade barrier", "noun", "贸易壁垒"],
+      ["embargo", "noun/verb", "禁运；实施禁运"],
+      ["dissent", "noun/verb", "异议；不同意"],
+      ["dissident", "noun/adj", "持异议者；持不同政见的"],
+      ["uprising", "noun", "起义；暴动"],
+      ["insurgency", "noun", "叛乱；暴动"],
+      ["insurgent", "noun/adj", "叛乱者；叛乱的"],
+      ["intervention", "noun", "干预；介入"],
+      ["intervene", "verb", "干预；介入"],
+      ["non-interference", "noun", "不干涉"]
+    ]
+  },
+  {
+    topic: "Tourism and Cultural Heritage",
+    band: "6.5+",
+    items: [
+      ["attraction", "noun", "旅游景点；吸引力"],
+      ["attractive", "adj", "有吸引力的"],
+      ["attractiveness", "noun", "吸引力；魅力"],
+      ["heritage tourism", "noun", "文化遗产旅游"],
+      ["cultural tourism", "noun", "文化旅游"],
+      ["ecological tourism", "noun", "生态旅游"],
+      ["domestic tourism", "noun", "国内旅游"],
+      ["international tourism", "noun", "国际旅游"],
+      ["tourist attraction", "noun", "旅游景点"],
+      ["tourist destination", "noun", "旅游目的地"],
+      ["tourist industry", "noun", "旅游业"],
+      ["tourist season", "noun", "旅游旺季"],
+      ["tourist expenditure", "noun", "游客消费"],
+      ["tourist influx", "noun", "游客大量涌入"],
+      ["itinerary planning", "noun", "行程规划"],
+      ["accommodation provider", "noun", "住宿服务提供商"],
+      ["reservation", "noun", "预订；保留"],
+      ["reserve", "verb/noun", "预订；保留"],
+      ["reservation system", "noun", "预订系统"],
+      ["hospitality industry", "noun", "酒店及接待服务业"],
+      ["catering", "noun", "餐饮服务"],
+      ["cater", "verb", "提供餐饮；满足需求"],
+      ["caterer", "noun", "餐饮服务商"],
+      ["leisure", "noun", "休闲；闲暇"],
+      ["leisurely", "adj/adv", "悠闲的；悠闲地"],
+      ["recreational facility", "noun", "休闲设施"],
+      ["amenity", "noun", "便利设施；生活配套"],
+      ["amenities", "noun", "生活配套设施"],
+      ["accessibility", "noun", "可达性；便利程度"],
+      ["accessible", "adj", "容易到达的；可使用的"],
+      ["inaccessible", "adj", "难以到达的；无法使用的"],
+      ["heritage site", "noun", "遗产地"],
+      ["historical site", "noun", "历史遗址"],
+      ["archaeological site", "noun", "考古遗址"],
+      ["archaeology", "noun", "考古学"],
+      ["archaeological", "adj", "考古学的"],
+      ["archaeologist", "noun", "考古学家"],
+      ["excavation", "noun", "挖掘；考古发掘"],
+      ["excavate", "verb", "挖掘；发掘"],
+      ["monument", "noun", "纪念碑；历史遗迹"],
+      ["monumental", "adj", "纪念碑式的；极其重要的"],
+      ["restoration project", "noun", "修复项目"],
+      ["preservation order", "noun", "保护令"],
+      ["cultural identity", "noun", "文化认同"],
+      ["cultural exchange", "noun", "文化交流"],
+      ["cultural diversity", "noun", "文化多样性"],
+      ["traditional craft", "noun", "传统手工艺"],
+      ["craftsmanship", "noun", "工艺；手艺"],
+      ["artisan", "noun", "工匠；手艺人"],
+      ["authenticity", "noun", "真实性；原真性"]
+    ]
+  },
+  {
+    topic: "Visual Arts and Design",
+    band: "6.5+",
+    items: [
+      ["aesthetic value", "noun", "审美价值"],
+      ["aesthetic appeal", "noun", "美学吸引力"],
+      ["aesthetically", "adv", "从审美角度；美观地"],
+      ["artistic", "adj", "艺术的；有艺术性的"],
+      ["artistically", "adv", "以艺术方式"],
+      ["artwork", "noun", "艺术作品"],
+      ["artistic expression", "noun", "艺术表达"],
+      ["creative expression", "noun", "创造性表达"],
+      ["creativity", "noun", "创造力"],
+      ["creative", "adj", "有创造力的"],
+      ["creatively", "adv", "创造性地"],
+      ["composition", "noun", "构图；作品；组成"],
+      ["compose", "verb", "创作；组成"],
+      ["compositional", "adj", "构图的；组成上的"],
+      ["canvas", "noun", "画布"],
+      ["canvas painting", "noun", "布面绘画"],
+      ["portrait", "noun", "肖像；人物画像"],
+      ["portraiture", "noun", "肖像画艺术"],
+      ["landscape painting", "noun", "风景画"],
+      ["abstract art", "noun", "抽象艺术"],
+      ["fine art", "noun", "美术；纯艺术"],
+      ["installation", "noun", "装置艺术；安装"],
+      ["installation art", "noun", "装置艺术"],
+      ["contemporary art", "noun", "当代艺术"],
+      ["modernism", "noun", "现代主义"],
+      ["modernist", "adj/noun", "现代主义的；现代主义者"],
+      ["postmodernism", "noun", "后现代主义"],
+      ["postmodern", "adj", "后现代的"],
+      ["minimalism", "noun", "极简主义"],
+      ["minimalist", "adj/noun", "极简主义的；极简主义者"],
+      ["ornament", "noun", "装饰物"],
+      ["ornamental", "adj", "装饰性的"],
+      ["ornamentation", "noun", "装饰；装饰手法"],
+      ["embellish", "verb", "装饰；润色"],
+      ["embellishment", "noun", "装饰；润色"],
+      ["symmetry", "noun", "对称；匀称"],
+      ["symmetrical", "adj", "对称的"],
+      ["asymmetry", "noun", "不对称"],
+      ["asymmetrical", "adj", "不对称的"],
+      ["proportion", "noun", "比例；均衡"],
+      ["proportional", "adj", "成比例的"],
+      ["proportionately", "adv", "按比例地"],
+      ["texture", "noun", "质地；纹理"],
+      ["textured", "adj", "有纹理的"],
+      ["visual impact", "noun", "视觉冲击力"],
+      ["visual perception", "noun", "视觉感知"],
+      ["colour scheme", "noun", "配色方案"],
+      ["colour palette", "noun", "色彩组合"],
+      ["typography", "noun", "字体设计；排版"],
+      ["typographic", "adj", "字体排印的"]
+    ]
+  },
+  {
+    topic: "Astronomy and Space",
+    band: "7+",
+    items: [
+      ["astronomy", "noun", "天文学"],
+      ["astronomer", "noun", "天文学家"],
+      ["astronomical", "adj", "天文学的；极其巨大的"],
+      ["astrophysics", "noun", "天体物理学"],
+      ["astrophysical", "adj", "天体物理学的"],
+      ["astrophysicist", "noun", "天体物理学家"],
+      ["celestial", "adj", "天体的；天空的"],
+      ["celestial body", "noun", "天体"],
+      ["constellation", "noun", "星座；星群"],
+      ["cosmic", "adj", "宇宙的"],
+      ["cosmos", "noun", "宇宙"],
+      ["cosmology", "noun", "宇宙学"],
+      ["cosmological", "adj", "宇宙学的"],
+      ["cosmologist", "noun", "宇宙学家"],
+      ["galaxy", "noun", "星系；银河系"],
+      ["galactic", "adj", "星系的"],
+      ["interstellar", "adj", "星际的"],
+      ["interplanetary", "adj", "行星际的"],
+      ["intergalactic", "adj", "星系际的"],
+      ["orbit", "noun/verb", "轨道；绕轨道运行"],
+      ["orbital", "adj", "轨道的"],
+      ["orbiter", "noun", "轨道飞行器"],
+      ["astronaut", "noun", "宇航员"],
+      ["astronautical", "adj", "航天的"],
+      ["astronautics", "noun", "航天学"],
+      ["spacecraft", "noun", "航天器"],
+      ["space exploration", "noun", "太空探索"],
+      ["space probe", "noun", "太空探测器"],
+      ["space station", "noun", "空间站"],
+      ["spaceflight", "noun", "太空飞行"],
+      ["space shuttle", "noun", "航天飞机"],
+      ["launch", "noun/verb", "发射；启动"],
+      ["launch vehicle", "noun", "运载火箭"],
+      ["launch pad", "noun", "发射台"],
+      ["payload", "noun", "有效载荷"],
+      ["satellite", "noun", "卫星"],
+      ["satellite-based", "adj", "基于卫星的"],
+      ["lunar", "adj", "月球的"],
+      ["solar", "adj", "太阳的"],
+      ["planetary", "adj", "行星的"],
+      ["planetarium", "noun", "天文馆"],
+      ["planetary system", "noun", "行星系统"],
+      ["solar system", "noun", "太阳系"],
+      ["black hole", "noun", "黑洞"],
+      ["supernova", "noun", "超新星"],
+      ["nebula", "noun", "星云"],
+      ["quasar", "noun", "类星体"],
+      ["light-year", "noun", "光年"],
+      ["telescope", "noun", "望远镜"],
+      ["observatory", "noun", "天文台"]
+    ]
+  },
+  {
+    topic: "Physics and Materials",
+    band: "7+",
+    items: [
+      ["acceleration", "noun", "加速度；加速"],
+      ["accelerate", "verb", "加速；促进"],
+      ["accelerated", "adj", "加速的"],
+      ["velocity", "noun", "速度；速率"],
+      ["momentum", "noun", "动量；势头"],
+      ["inertia", "noun", "惯性"],
+      ["inertial", "adj", "惯性的"],
+      ["friction", "noun", "摩擦；摩擦力"],
+      ["frictional", "adj", "摩擦的"],
+      ["gravity", "noun", "重力；引力"],
+      ["gravitational", "adj", "引力的"],
+      ["gravitation", "noun", "万有引力"],
+      ["magnetism", "noun", "磁性；磁学"],
+      ["magnetic", "adj", "磁性的"],
+      ["magnetise", "verb", "使磁化"],
+      ["magnetisation", "noun", "磁化；磁化作用"],
+      ["electromagnet", "noun", "电磁铁"],
+      ["electromagnetic", "adj", "电磁的"],
+      ["electromagnetism", "noun", "电磁学"],
+      ["electromagnetic radiation", "noun", "电磁辐射"],
+      ["conductivity", "noun", "导电性；传导性"],
+      ["conductive", "adj", "导电的；传导的"],
+      ["conductor", "noun", "导体；指挥"],
+      ["insulator", "noun", "绝缘体"],
+      ["insulation", "noun", "绝缘；隔热"],
+      ["insulate", "verb", "使绝缘；使隔热"],
+      ["insulating", "adj", "绝缘的；隔热的"],
+      ["resistance", "noun", "电阻；阻力"],
+      ["resistant", "adj", "有抵抗力的；耐……的"],
+      ["resistivity", "noun", "电阻率"],
+      ["voltage", "noun", "电压"],
+      ["current", "noun", "电流；当前情况"],
+      ["electrical current", "noun", "电流"],
+      ["circuit breaker", "noun", "断路器"],
+      ["alternating current", "noun", "交流电"],
+      ["direct current", "noun", "直流电"],
+      ["semiconductor", "noun", "半导体"],
+      ["semiconducting", "adj", "半导体的"],
+      ["superconductivity", "noun", "超导性"],
+      ["superconductor", "noun", "超导体"],
+      ["alloy", "noun", "合金"],
+      ["alloying", "noun", "合金化"],
+      ["composite", "noun/adj", "复合材料；复合的"],
+      ["composite material", "noun", "复合材料"],
+      ["polymer", "noun", "聚合物"],
+      ["polymeric", "adj", "聚合物的"],
+      ["polymerisation", "noun", "聚合"],
+      ["polymerise", "verb", "使聚合"],
+      ["ceramic", "noun/adj", "陶瓷；陶瓷的"],
+      ["ceramics", "noun", "陶瓷材料；陶瓷工艺"]
+    ]
+  },
+  {
+    topic: "Chemistry and Biological Science",
+    band: "7+",
+    items: [
+      ["chemical compound", "noun", "化合物"],
+      ["compound", "noun/verb", "化合物；混合；加重"],
+      ["composition", "noun", "组成；成分"],
+      ["constituent", "noun/adj", "组成部分；构成的"],
+      ["constituency", "noun", "选区；成分构成"],
+      ["molecular structure", "noun", "分子结构"],
+      ["chemical reaction", "noun", "化学反应"],
+      ["reactant", "noun", "反应物"],
+      ["reaction", "noun", "反应"],
+      ["reactive", "adj", "反应性的；活泼的"],
+      ["reactivity", "noun", "反应性"],
+      ["catalyst", "noun", "催化剂；促成因素"],
+      ["catalytic", "adj", "催化的"],
+      ["catalyse", "verb", "催化；促成"],
+      ["catalysis", "noun", "催化作用"],
+      ["oxidation", "noun", "氧化"],
+      ["oxidise", "verb", "使氧化"],
+      ["oxidative", "adj", "氧化的"],
+      ["reduction", "noun", "还原；减少"],
+      ["reductive", "adj", "还原性的；简化的"],
+      ["acidification", "noun", "酸化"],
+      ["acidify", "verb", "使酸化"],
+      ["alkaline", "adj", "碱性的"],
+      ["alkalinity", "noun", "碱度"],
+      ["alkali", "noun", "碱"],
+      ["solubility", "noun", "溶解度"],
+      ["soluble", "adj", "可溶的"],
+      ["insoluble", "adj", "不溶的"],
+      ["solvent", "noun/adj", "溶剂；有偿付能力的"],
+      ["dissolve", "verb", "溶解；解散"],
+      ["dissolution", "noun", "溶解；解散"],
+      ["concentration level", "noun", "浓度水平"],
+      ["concentrated", "adj", "浓缩的；集中的"],
+      ["dilute", "verb/adj", "稀释；稀释的"],
+      ["dilution", "noun", "稀释"],
+      ["aqueous", "adj", "水溶液的；含水的"],
+      ["aqueous solution", "noun", "水溶液"],
+      ["crystallisation", "noun", "结晶；结晶作用"],
+      ["crystallise", "verb", "结晶；使具体化"],
+      ["crystalline", "adj", "结晶的"],
+      ["crystal", "noun", "晶体；水晶"],
+      ["microscopic organism", "noun", "微生物"],
+      ["microorganism", "noun", "微生物"],
+      ["microbial", "adj", "微生物的"],
+      ["microbe", "noun", "微生物"],
+      ["microbial activity", "noun", "微生物活动"],
+      ["enzyme", "noun", "酶"],
+      ["enzymatic", "adj", "酶的；由酶催化的"],
+      ["biochemical process", "noun", "生化过程"],
+      ["biotechnology", "noun", "生物技术"]
+    ]
+  },
+  {
+    topic: "Philosophy and Ethics",
+    band: "7+",
+    items: [
+      ["ethical", "adj", "道德的；伦理的"],
+      ["ethically", "adv", "在伦理上；道德地"],
+      ["ethics", "noun", "伦理学；道德准则"],
+      ["ethical dilemma", "noun", "伦理困境"],
+      ["ethical standard", "noun", "伦理标准"],
+      ["morality", "noun", "道德；道德观"],
+      ["moral", "adj/noun", "道德的；寓意"],
+      ["immoral", "adj", "不道德的"],
+      ["immorality", "noun", "不道德"],
+      ["moral obligation", "noun", "道德义务"],
+      ["moral judgement", "noun", "道德判断"],
+      ["virtue", "noun", "美德；优点"],
+      ["virtuous", "adj", "有美德的；品德高尚的"],
+      ["vice", "noun", "恶习；缺点"],
+      ["conscience", "noun", "良知；良心"],
+      ["conscientious", "adj", "认真的；凭良心做事的"],
+      ["conscientiously", "adv", "认真负责地"],
+      ["integrity", "noun", "正直；诚信；完整性"],
+      ["principle", "noun", "原则；原理"],
+      ["principled", "adj", "有原则的"],
+      ["principled behaviour", "noun", "有原则的行为"],
+      ["altruistic", "adj", "利他的；无私的"],
+      ["altruistically", "adv", "无私地"],
+      ["selflessness", "noun", "无私；忘我"],
+      ["selfless", "adj", "无私的"],
+      ["egoism", "noun", "利己主义"],
+      ["egoist", "noun", "利己主义者"],
+      ["egotistical", "adj", "自我中心的；自负的"],
+      ["utilitarianism", "noun", "功利主义"],
+      ["utilitarian", "adj/noun", "功利主义的；功利主义者"],
+      ["consequentialism", "noun", "结果主义"],
+      ["deontology", "noun", "义务论；道义论"],
+      ["deontological", "adj", "义务论的"],
+      ["existentialism", "noun", "存在主义"],
+      ["existential", "adj", "存在的；有关存在主义的"],
+      ["existentialist", "noun/adj", "存在主义者；存在主义的"],
+      ["humanism", "noun", "人文主义"],
+      ["humanist", "noun/adj", "人文主义者；人文主义的"],
+      ["humanistic", "adj", "人文主义的"],
+      ["rationalism", "noun", "理性主义"],
+      ["rationalist", "noun/adj", "理性主义者；理性主义的"],
+      ["empirical evidence", "noun", "经验证据"],
+      ["subjectivity", "noun", "主观性"],
+      ["subjective", "adj", "主观的"],
+      ["objectivity", "noun", "客观性"],
+      ["objective", "adj/noun", "客观的；目标"],
+      ["objectively", "adv", "客观地"],
+      ["relativism", "noun", "相对主义"],
+      ["relativist", "noun/adj", "相对主义者；相对主义的"],
+      ["absolutism", "noun", "绝对主义"]
+    ]
+  },
+  {
+    topic: "Social Policy and Public Services",
+    band: "6.5+",
+    items: [
+      ["public expenditure", "noun", "公共支出"],
+      ["public funding", "noun", "公共资金"],
+      ["public sector", "noun", "公共部门"],
+      ["private sector", "noun", "私营部门"],
+      ["public service", "noun", "公共服务"],
+      ["public servant", "noun", "公职人员"],
+      ["public institution", "noun", "公共机构"],
+      ["public infrastructure", "noun", "公共基础设施"],
+      ["public facility", "noun", "公共设施"],
+      ["public transport", "noun", "公共交通"],
+      ["public housing", "noun", "公共住房"],
+      ["social policy", "noun", "社会政策"],
+      ["social provision", "noun", "社会保障供给"],
+      ["social protection", "noun", "社会保护"],
+      ["social assistance", "noun", "社会救助"],
+      ["social insurance", "noun", "社会保险"],
+      ["social security", "noun", "社会保障"],
+      ["pension", "noun", "养老金；退休金"],
+      ["pensioner", "noun", "养老金领取者"],
+      ["pensionable", "adj", "符合领取养老金条件的"],
+      ["retirement age", "noun", "退休年龄"],
+      ["welfare state", "noun", "福利国家"],
+      ["welfare provision", "noun", "福利供给"],
+      ["beneficiary", "noun", "受益人；受助者"],
+      ["beneficial", "adj", "有益的"],
+      ["beneficially", "adv", "有益地"],
+      ["entitlement", "noun", "权利；福利资格"],
+      ["eligible", "adj", "符合资格的"],
+      ["eligibility", "noun", "资格；合格条件"],
+      ["ineligible", "adj", "不符合资格的"],
+      ["means-tested", "adj", "经过经济状况审查的"],
+      ["means test", "noun", "经济状况审查"],
+      ["subsidised housing", "noun", "补贴住房"],
+      ["housing allowance", "noun", "住房补贴"],
+      ["child benefit", "noun", "儿童福利金"],
+      ["universal healthcare", "noun", "全民医疗保障"],
+      ["healthcare provision", "noun", "医疗服务供给"],
+      ["caregiver", "noun", "照护者；护理人员"],
+      ["caregiving", "noun", "照护工作"],
+      ["eldercare", "noun", "老年护理"],
+      ["disability benefit", "noun", "残障福利金"],
+      ["income support", "noun", "收入补助"],
+      ["financial assistance", "noun", "经济援助"],
+      ["community service", "noun", "社区服务"],
+      ["voluntary service", "noun", "志愿服务"],
+      ["volunteerism", "noun", "志愿服务精神"],
+      ["volunteer", "noun/verb", "志愿者；自愿做"],
+      ["voluntary", "adj", "自愿的；志愿的"],
+      ["non-profit", "adj/noun", "非营利的；非营利组织"],
+      ["charitable", "adj", "慈善的"]
+    ]
+  },
+  {
+    topic: "Language and Communication",
+    band: "7+",
+    items: [
+      ["acquisition of language", "noun", "语言习得"],
+      ["language acquisition", "noun", "语言习得"],
+      ["second-language learning", "noun", "第二语言学习"],
+      ["mother tongue", "noun", "母语"],
+      ["native speaker", "noun", "母语使用者"],
+      ["fluency", "noun", "流利程度；流畅"],
+      ["fluent", "adj", "流利的"],
+      ["fluently", "adv", "流利地"],
+      ["proficiency level", "noun", "熟练程度"],
+      ["pronunciation", "noun", "发音"],
+      ["pronounce", "verb", "发音；宣称"],
+      ["pronounced", "adj", "明显的；发音清晰的"],
+      ["intonation", "noun", "语调；抑扬顿挫"],
+      ["intonational", "adj", "语调的"],
+      ["articulate speech", "noun", "清晰表达的言语"],
+      ["speech pattern", "noun", "言语模式"],
+      ["speech community", "noun", "言语社群"],
+      ["sociolinguistics", "noun", "社会语言学"],
+      ["sociolinguistic", "adj", "社会语言学的"],
+      ["sociolinguist", "noun", "社会语言学家"],
+      ["bilingualism", "noun", "双语现象；双语能力"],
+      ["bilingual education", "noun", "双语教育"],
+      ["code-switching", "noun", "语码转换"],
+      ["code-switch", "verb", "进行语码转换"],
+      ["vernacular", "noun/adj", "本地语言；本地语言的"],
+      ["vernacular language", "noun", "本土语言"],
+      ["standard language", "noun", "标准语言"],
+      ["standardisation", "noun", "标准化"],
+      ["standardise", "verb", "使标准化"],
+      ["lexicon", "noun", "词汇；词典"],
+      ["lexical", "adj", "词汇的"],
+      ["lexically", "adv", "从词汇角度"],
+      ["vocabulary acquisition", "noun", "词汇习得"],
+      ["vocabulary range", "noun", "词汇范围"],
+      ["word formation", "noun", "构词法"],
+      ["morphology", "noun", "形态学；词形变化"],
+      ["morphological", "adj", "形态学的"],
+      ["morpheme", "noun", "语素"],
+      ["morphemic", "adj", "语素的"],
+      ["etymology", "noun", "词源学"],
+      ["etymological", "adj", "词源学的"],
+      ["etymologist", "noun", "词源学家"],
+      ["neologism", "noun", "新词；新造词"],
+      ["neologistic", "adj", "新词的；新造词的"],
+      ["loanword", "noun", "外来词"],
+      ["loanwords", "noun", "外来词（复数）"],
+      ["borrowed word", "noun", "借词；外来词"],
+      ["language shift", "noun", "语言转移"],
+      ["language maintenance", "noun", "语言维持"],
+      ["language extinction", "noun", "语言消亡"],
+      ["endangered language", "noun", "濒危语言"]
+    ]
+  }
+];
+
+let nextId = 2186;
+
+export const wordsBatch05: WordEntry[] = groups.flatMap((group) =>
+  group.items.map(([word, pos, zh]) => ({
+    id: nextId++,
+    word,
+    pos,
+    zh,
+    topic: group.topic,
+    band: group.band
+  }))
+);
+
+// 数量检查：只警告，不抛出错误。
+if (wordsBatch05.length !== 500) {
+  console.warn(
+    `第五批词库数量提示：目标 500 个，当前 ${wordsBatch05.length} 个。`
+  );
+}
+
+// 第五批内部重复检查。
+const wordCounts = new Map<string, number>();
+
+for (const entry of wordsBatch05) {
+  const normalisedWord = entry.word.trim().toLowerCase();
+  wordCounts.set(
+    normalisedWord,
+    (wordCounts.get(normalisedWord) || 0) + 1
+  );
+}
+
+const duplicateWords = Array.from(wordCounts.entries())
+  .filter(([, count]) => count > 1)
+  .map(([word]) => word);
+
+if (duplicateWords.length > 0) {
+  console.warn("第五批内部存在重复词：", duplicateWords);
+}
+
+// 与前四批交叉检查：只警告，不影响网站运行。
+const previousWords = new Set(
+  [
+    ...wordsBatch01,
+    ...wordsBatch02,
+    ...wordsBatch03,
+    ...wordsBatch04
+  ].map((entry) => entry.word.trim().toLowerCase())
+);
+
+const repeatedPreviousWords = wordsBatch05
+  .map((entry) => entry.word.trim().toLowerCase())
+  .filter((word) => previousWords.has(word));
+
+const uniqueRepeatedPreviousWords = Array.from(
+  new Set(repeatedPreviousWords)
+);
+
+if (uniqueRepeatedPreviousWords.length > 0) {
+  console.warn(
+    "第五批与前四批存在重复词：",
+    uniqueRepeatedPreviousWords
+  );
+}
+
+// ID 连续性检查：只警告，不影响网站运行。
+const expectedLastId = 2185 + wordsBatch05.length;
+
+if (
+  wordsBatch05.length > 0 &&
+  (wordsBatch05[0].id !== 2186 ||
+    wordsBatch05[wordsBatch05.length - 1].id !== expectedLastId)
+) {
+  console.warn("第五批词库 ID 编号异常，请检查编号是否连续。");
+}

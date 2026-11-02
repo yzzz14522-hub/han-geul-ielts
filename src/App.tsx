@@ -15,6 +15,7 @@ import {
 
 import { wordsBatch01 } from "./words-batch-01";
 import { wordsBatch02 } from "./words-batch-02";
+import { wordsBatch03 } from "./words-batch-03";
 
 type Word = {
   id: number;
@@ -227,7 +228,8 @@ const legacyWords: Word[] = [
 const words: Word[] = [
   ...legacyWords,
   ...wordsBatch01,
-  ...wordsBatch02
+  ...wordsBatch02,
+  ...wordsBatch03
 ];
 
 const stages: { id: Stage; label: string }[] = [

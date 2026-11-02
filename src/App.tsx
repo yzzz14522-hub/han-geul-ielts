@@ -17,6 +17,7 @@ import { wordsBatch01 } from "./words-batch-01";
 import { wordsBatch02 } from "./words-batch-02";
 import { wordsBatch03 } from "./words-batch-03";
 import { wordsBatch04 } from "./words-batch-04";
+import { wordsBatch05 } from "./words-batch-05";
 
 type Word = {
   id: number;
@@ -231,7 +232,8 @@ const words: Word[] = [
   ...wordsBatch01,
   ...wordsBatch02,
   ...wordsBatch03,
-  ...wordsBatch04
+  ...wordsBatch04,
+  ...wordsBatch05
 ];
 
 const stages: { id: Stage; label: string }[] = [
